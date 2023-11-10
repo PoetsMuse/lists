@@ -1,24 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import { RegularList } from "./RegularList";
+import { SmallPersonListItem } from "./people/SmallPersonListItem";
+import { LargePersonListItem } from "./people/LargePersonListItem";
+import { NumberedList } from "./NumberedList";
+import { LargeProductListItem } from "./products/LargeProductListItem";
+
+const people = [{
+  name: 'John Doe',
+  age: 34,
+  hairColor: 'brown',
+  hobbies: ['swimming', 'cycling', 'video games'],
+}, {
+  name: 'Brenda Smith',
+  age: 33,
+  hairColor: 'black',
+  hobbies: ['golf', 'math'],
+}, {
+  name: 'Jane Garcia',
+  age: 27,
+  hairColor: 'blonde',
+  hobbies: ['biology', 'medicine', 'gymnastics'],
+}];
+
+const products = [{
+  name: 'Flat-Screen TV',
+  price: '$300',
+  description: 'Huge LCD screen, a great deal',
+  rating: 4.5,
+}, {
+  name: 'Basketball',
+  price: '$10',
+  description: 'Just like the professionals use',
+  rating: 3.8,
+}, {
+  name: 'Running shoes',
+  price: '$120',
+  description: 'Ergonomic shoes for running',
+  rating: 4.2,
+}];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <RegularList 
+      items={people}
+      resourceName="person"
+      itemComponent={SmallPersonListItem} />
+      <RegularList 
+        items={people}
+        resourceName="person"
+        itemComponent={LargePersonListItem} />
+      <NumberedList
+        items={products}
+        resourceName="product"
+        itemComponent={LargeProductListItem} />
+    </>
+    
   );
 }
 
